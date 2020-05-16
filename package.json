@@ -35,5 +35,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "Create a web app (using any programming languages) which logs calculations as they happen and shares those calculations with everyone connected to the website.",
+  "main": "index.js",
+  "devDependencies": {},
+  "author": "James Nguyen",
+  "license": "ISC"
 }
