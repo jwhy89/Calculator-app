@@ -1,13 +1,14 @@
 import React from "react";
 import "./App.css";
-import Calculator from "../../features/Calculator";
+import Pad from "../../features/Pad";
+import Display from '../../features/Display';
 
 const App = () => {
   return (
     <div>
       <header className="App-header">
-        <p>Calculator</p>
-        <Calculator />
+      <Display value="123" hasMemory={true} operator="+" />
+        <Pad />
         <p>Calculations</p>
       </header>
     </div>
