@@ -7,6 +7,7 @@ const App = () => {
   return (
     <div>
       <header className="App-header">
+      <p>Calculator</p>
       <Display value="123" hasMemory={true} operator="+" />
         <Pad />
         <p>Calculations</p>

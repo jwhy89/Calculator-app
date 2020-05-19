@@ -28,46 +28,6 @@
   color: #61dafb;
 }
 
-.Input-button {
-  background-color: #313131;
-  color: #fff;
-  font-size: 34px;
-  width: 100px;
-  height: 80px;
-  border-style: none;
-  border: 1px solid #00b2ff;
-}
-
-.Operator-button {
-  background-color: #C5830D;
-  color: #fff;
-  font-size: 34px;
-  width: 100px;
-  height: 80px;
-  border-style: none;
-  border: 1px solid #00b2ff;
-}
-
-.AC-button {
-  background-color: #c04444;
-  color: #fff;
-  font-size: 34px;
-  width: 100px;
-  height: 80px;
-  border-style: none;
-  border: 1px solid #00b2ff;
-}
-
-.Equal-button {
-  background-color: #018645;
-  color: #fff;
-  font-size: 34px;
-  width: 200px;
-  height: 80px;
-  border-style: none;
-  border: 1px solid #00b2ff;
-}
-
 .Display-output {
   text-align: right;
   width: 400px;
