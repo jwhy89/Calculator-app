@@ -20,7 +20,7 @@ const Display: FunctionComponent<DisplayProps> = ({
             <span className="Indicator-item">{operator}</span>
           </span>
 
-          <div>{value}</div>
+          <div className="Value-display">{value}</div>
       </div>
     </div>
   );

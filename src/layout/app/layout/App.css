@@ -38,6 +38,16 @@
   border: 1px solid #00b2ff;
 }
 
+.Operator-button {
+  background-color: #C5830D;
+  color: #fff;
+  font-size: 34px;
+  width: 100px;
+  height: 80px;
+  border-style: none;
+  border: 1px solid #00b2ff;
+}
+
 .AC-button {
   background-color: #c04444;
   color: #fff;
@@ -68,7 +78,7 @@
 
 .Indicator-list {
   display: inline-block;
-  min-width: 1.2em;
+  min-width: 1em;
   text-align: right;
 }
 
@@ -78,3 +88,14 @@
   min-width: 1.2em;
   text-align: right;
 }
+
+.Value-display{
+  font-size: 2em;
+  min-height: 1.4em;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  justify-content: flex-end;
+  overflow: hidden;
+};

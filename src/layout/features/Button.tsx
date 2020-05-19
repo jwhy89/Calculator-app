@@ -1,8 +1,7 @@
 import React, { FunctionComponent } from "react";
 
 interface ButtonProps {
-  color?: "red" | "green" | "dark";
-  isLarge?: boolean;
+  className?: object;
   onClick?: () => void;
 }
 
@@ -11,7 +10,7 @@ const Button: FunctionComponent<ButtonProps> = ({
   children
 }) => {
   return <Button>
-      {children}
+      {children} 
   </Button>;
 };
 
