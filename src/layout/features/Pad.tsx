@@ -1,17 +1,22 @@
-import React from "react";
-import styled from 'styled-components'
-import Button from '../features/Button'
+import React, { FunctionComponent } from "react";
+import styled from "styled-components";
+import Button from "../features/Button";
+import { Digit, Operator } from "../app/models/types";
+
+interface PadProps {
+  onDigitButtonClick: (digit: Digit) => void;
+}
 
 const StyledPad = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 1fr;`
+  grid-auto-rows: 1fr;
+`;
 
-export const Pad = () => {
+export const Pad: FunctionComponent<PadProps> = ({ onDigitButtonClick }) => {
   return (
     <StyledPad>
-
-<Button>MR</Button>
+      <Button>MR</Button>
       <Button>MC</Button>
       <Button>M+</Button>
       <Button>M-</Button>
@@ -19,23 +24,24 @@ export const Pad = () => {
       <Button>C</Button>
       <Button>-/+</Button>
       <Button color="dark">÷</Button>
-      <Button>7</Button>
-      <Button>8</Button>
-      <Button>9</Button>
+      <Button onClick={() => onDigitButtonClick(7)}>7</Button>
+      <Button onClick={() => onDigitButtonClick(8)}>8</Button>
+      <Button onClick={() => onDigitButtonClick(9)}>9</Button>
       <Button color="dark">×</Button>
-      <Button>4</Button>
-      <Button>5</Button>
-      <Button>6</Button>
+      <Button onClick={() => onDigitButtonClick(4)}>4</Button>
+      <Button onClick={() => onDigitButtonClick(5)}>5</Button>
+      <Button onClick={() => onDigitButtonClick(6)}>6</Button>
       <Button color="dark">-</Button>
-      <Button>1</Button>
-      <Button>2</Button>
-      <Button>3</Button>
+      <Button onClick={() => onDigitButtonClick(1)}>1</Button>
+      <Button onClick={() => onDigitButtonClick(2)}>2</Button>
+      <Button onClick={() => onDigitButtonClick(3)}>3</Button>
       <Button color="dark">+</Button>
-      <Button>0</Button>
+      <Button onClick={() => onDigitButtonClick(0)}>0</Button>
       <Button>.</Button>
-      <Button color="green" isLarge={true}>=</Button>
-
-      </StyledPad>
+      <Button color="green" isLarge={true}>
+        =
+      </Button>
+    </StyledPad>
   );
 };
 
