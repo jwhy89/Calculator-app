@@ -6,27 +6,89 @@ import { Digit, Operator } from "../models/types";
 
 export const App: FunctionComponent = () => {
   const [display, setDisplay] = useState<string>("0");
+  const [result, setResult] = useState<number>(0);
+  const [waitingForOperand, setWaitingForOperand] = useState<boolean>(true);
+  const [pendingOperator, setPendingOperator] = useState<Operator>();
 
+  // Calculate
+  const calculate = (
+    rightOperand: number,
+    pendingOperator: Operator
+  ): boolean => {
+    let newResult = result;
+
+    switch (pendingOperator) {
+      case "+":
+        newResult += rightOperand;
+        break;
+      case "-":
+        newResult -= rightOperand;
+        break;
+      case "×":
+        newResult *= rightOperand;
+        break;
+      case "÷":
+        if (rightOperand === 0) {
+          return false;
+        }
+
+        newResult /= rightOperand;
+    }
+
+    setResult(newResult);
+    setDisplay(newResult.toString().toString().slice(0, 12));
+
+    return true;
+  };
+
+  // Button Handlers
   const onDigitButtonClick = (digit: Digit) => {
-    let newDisplay = display
+    let newDisplay = display;
 
-    if ((display === '0' && digit === 0) || display.length > 12) {
-      return
+    if ((display === "0" && digit === 0) || display.length > 12) {
+      return;
     }
-    if (display !== '0') {
-      newDisplay = newDisplay + digit.toString()
+    if (display !== "0") {
+      newDisplay = newDisplay + digit.toString();
     } else {
-      newDisplay = digit.toString()
+      newDisplay = digit.toString();
     }
 
-    setDisplay(newDisplay)
-  }
+    setDisplay(newDisplay);
+  };
+
+  const onOperatorButtonClick = (operator: Operator) => {
+    const operand = Number(display);
+
+    if (typeof pendingOperator !== "undefined" && !waitingForOperand) {
+      if (!calculate(operand, pendingOperator)) {
+        return;
+      }
+    } else {
+      setResult(operand);
+    }
+
+    setPendingOperator(operator);
+    setWaitingForOperand(true);
+  };
+
   return (
     <div>
       <header className="App-header">
         <p>Calculator</p>
-        <Display value="123" hasMemory={true} operator="+" />
-        <Pad onDigitButtonClick={onDigitButtonClick} />
+        <Display
+          value={display}
+          hasMemory={true}
+          expression={
+            typeof pendingOperator !== "undefined"
+              ? `${result}${pendingOperator}${waitingForOperand ? "" : display}`
+              : ""
+          }
+        />
+        <Pad
+          onDigitButtonClick={onDigitButtonClick}
+          onOperatorButtonClick={onOperatorButtonClick}
+        />
         <p>Calculations</p>
       </header>
     </div>

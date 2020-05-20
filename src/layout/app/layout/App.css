@@ -37,16 +37,17 @@
 }
 
 .Indicator-list {
-  display: inline-block;
-  min-width: 1em;
-  text-align: right;
+  margin: 10px 15px 0px;
+  line-height: 1;
+  opacity: 0.4;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.25em;
+  min-height: 1em;
 }
 
 .Indicator-item {
-  margin-right: 0;
-  display: inline-block;
-  min-width: 1.2em;
-  text-align: right;
+  margin-left: auto;
 }
 
 .Value-display{

@@ -2,25 +2,24 @@ import React, { FunctionComponent } from "react";
 
 interface DisplayProps {
   hasMemory: boolean;
-  operator: "+" | "-" | "×" | "÷" | "";
+  expression: string;
   value: string;
 }
 const Display: FunctionComponent<DisplayProps> = ({
   value,
   hasMemory,
-  operator,
+  expression,
 }) => {
   return (
     <div>
       <div className="Display-output">
+        <span className="Indicator-list">
+          {hasMemory && <span>M</span>}
 
-          <span className="Indicator-list">
-            {hasMemory && <span className="Indicator-item">M</span>}
+          <span className="Indicator-item">{expression}</span>
+        </span>
 
-            <span className="Indicator-item">{operator}</span>
-          </span>
-
-          <div className="Value-display">{value}</div>
+        <div className="Value-display">{value}</div>
       </div>
     </div>
   );
