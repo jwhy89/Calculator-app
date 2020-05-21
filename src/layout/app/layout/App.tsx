@@ -9,7 +9,6 @@ export const App: FunctionComponent = () => {
   const [result, setResult] = useState<number>(0);
   const [waitingForOperand, setWaitingForOperand] = useState<boolean>(true);
   const [pendingOperator, setPendingOperator] = useState<Operator>();
-  const [memory, setMemory] = useState<number>(0);
 
   // Calculate
   const calculate = (
@@ -29,19 +28,13 @@ export const App: FunctionComponent = () => {
         break;
       case "÷":
         if (rightOperand === 0) {
-          newResult = 0;
-          break;
+          return false;
         }
         newResult /= rightOperand;
-        break;
     }
     setResult(newResult);
-    // Display "ERROR" when /0
-    if (pendingOperator === "÷" && rightOperand === 0) {
-      setDisplay("ERROR");
-    } else {
-      setDisplay(newResult.toString().toString().slice(0, 12));
-    }
+    setDisplay(newResult.toString().toString().slice(0, 12));
+
     return true;
   };
 
@@ -78,14 +71,17 @@ export const App: FunctionComponent = () => {
 
   const onEqualButtonClick = () => {
     const operand = Number(display);
+
     if (typeof pendingOperator !== "undefined" && !waitingForOperand) {
       if (!calculate(operand, pendingOperator)) {
         return;
       }
+
       setPendingOperator(undefined);
     } else {
       setDisplay(operand.toString());
     }
+
     setResult(operand);
     setWaitingForOperand(true);
   }; // End of Equal button handler
@@ -100,49 +96,7 @@ export const App: FunctionComponent = () => {
   const onClearEntryButtonClick = () => {
     setDisplay("0");
     setWaitingForOperand(true);
-  }; // End of All Clear button handler
-
-  const onMemoryRecallButtonClick = () => {
-    setDisplay(memory.toString());
-    setWaitingForOperand(true);
-  }; // End of Memory Recall Button handler
-
-  const onMemoryClearButtonClick = () => {
-    setMemory(0);
-    setWaitingForOperand(true);
-  }; // End of Memory Clear button handler
-
-  const onMemoryPlusButtonClick = () => {
-    setMemory(memory + Number(display));
-    setWaitingForOperand(true);
-  }; // End of Memory Plus button handler
-
-  const onMemoryMinusButtonClick = () => {
-    setMemory(memory - Number(display));
-    setWaitingForOperand(true);
-  }; // End of Memory Minus button handler
-
-  const onDecimalButtonClick = () => {
-    let newDisplay = display
-    if (waitingForOperand) {
-      newDisplay = '0'
-    }
-    if (newDisplay.indexOf('.') === -1) {
-      newDisplay = newDisplay + '.'
-    }
-    setDisplay(newDisplay)
-    setWaitingForOperand(false)
-  } // End of Decimal Button handler
-
-  const onChangeSignButtonClick = () => {
-    const value = Number(display);
-
-    if (value > 0) {
-      setDisplay("-" + display);
-    } else if (value < 0) {
-      setDisplay(display.slice(1));
-    }
-  }; // End of OnChange Button Handler
+  };
 
   return (
     <div>
@@ -150,7 +104,7 @@ export const App: FunctionComponent = () => {
         <p>Calculator</p>
         <Display
           value={display}
-          hasMemory={memory !== 0}
+          hasMemory={true}
           expression={
             typeof pendingOperator !== "undefined"
               ? `${result}${pendingOperator}${waitingForOperand ? "" : display}`
@@ -163,12 +117,6 @@ export const App: FunctionComponent = () => {
           onEqualButtonClick={onEqualButtonClick}
           onAllClearButtonClick={onAllClearButtonClick}
           onClearEntryButtonClick={onClearEntryButtonClick}
-          onMemoryRecallButtonClick={onMemoryRecallButtonClick}
-          onMemoryClearButtonClick={onMemoryClearButtonClick}
-          onMemoryPlusButtonClick={onMemoryPlusButtonClick}
-          onMemoryMinusButtonClick={onMemoryMinusButtonClick}
-          onDecimalButtonClick={onDecimalButtonClick}
-          onChangeSignButtonClick={onChangeSignButtonClick}
         />
         <p>Calculations</p>
       </header>

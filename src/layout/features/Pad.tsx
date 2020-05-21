@@ -7,14 +7,8 @@ interface PadProps {
   onDigitButtonClick: (digit: Digit) => void;
   onOperatorButtonClick: (operator: Operator) => void;
   onEqualButtonClick: () => void;
-  onAllClearButtonClick: () => void;
-  onClearEntryButtonClick: () => void;
-  onMemoryRecallButtonClick: () => void;
-  onMemoryClearButtonClick: () => void;
-  onMemoryPlusButtonClick: () => void;
-  onMemoryMinusButtonClick: () => void;
-  onDecimalButtonClick: () => void;
-  onChangeSignButtonClick: () => void;
+  onAllClearButtonClick: () => void
+  onClearEntryButtonClick: () => void
 }
 
 const StyledPad = styled.div`
@@ -23,53 +17,32 @@ const StyledPad = styled.div`
   grid-auto-rows: 1fr;
 `;
 
-export const Pad: FunctionComponent<PadProps> = ({
-  onDigitButtonClick,
-  onOperatorButtonClick,
-  onEqualButtonClick,
-  onAllClearButtonClick,
-  onClearEntryButtonClick,
-  onMemoryRecallButtonClick,
-  onMemoryClearButtonClick,
-  onMemoryPlusButtonClick,
-  onMemoryMinusButtonClick,
-  onDecimalButtonClick,
-  onChangeSignButtonClick
-}) => {
+export const Pad: FunctionComponent<PadProps> = ({ onDigitButtonClick, onOperatorButtonClick, onEqualButtonClick, onAllClearButtonClick,
+  onClearEntryButtonClick }) => {
   return (
     <StyledPad>
-      <Button onClick={onMemoryRecallButtonClick}>MR</Button>
-      <Button onClick={onMemoryClearButtonClick}>MC</Button>
-      <Button onClick={onMemoryPlusButtonClick}>M+</Button>
-      <Button onClick={onMemoryMinusButtonClick}>M-</Button>
-      <Button color="red" onClick={onAllClearButtonClick}>
-        AC
-      </Button>
+      <Button>MR</Button>
+      <Button>MC</Button>
+      <Button>M+</Button>
+      <Button>M-</Button>
+      <Button color="red" onClick={onAllClearButtonClick}>AC</Button>
       <Button onClick={onClearEntryButtonClick}>C</Button>
-      <Button onClick={onChangeSignButtonClick}>-/+</Button>
-      <Button color="dark" onClick={() => onOperatorButtonClick("÷")}>
-        ÷
-      </Button>
+      <Button>-/+</Button>
+      <Button color="dark" onClick={() => onOperatorButtonClick('÷')}>÷</Button>
       <Button onClick={() => onDigitButtonClick(7)}>7</Button>
       <Button onClick={() => onDigitButtonClick(8)}>8</Button>
       <Button onClick={() => onDigitButtonClick(9)}>9</Button>
-      <Button color="dark" onClick={() => onOperatorButtonClick("×")}>
-        ×
-      </Button>
+      <Button color="dark" onClick={() => onOperatorButtonClick('×')}>×</Button>
       <Button onClick={() => onDigitButtonClick(4)}>4</Button>
       <Button onClick={() => onDigitButtonClick(5)}>5</Button>
       <Button onClick={() => onDigitButtonClick(6)}>6</Button>
-      <Button color="dark" onClick={() => onOperatorButtonClick("-")}>
-        -
-      </Button>
+      <Button color="dark" onClick={() => onOperatorButtonClick('-')}>-</Button>
       <Button onClick={() => onDigitButtonClick(1)}>1</Button>
       <Button onClick={() => onDigitButtonClick(2)}>2</Button>
       <Button onClick={() => onDigitButtonClick(3)}>3</Button>
-      <Button color="dark" onClick={() => onOperatorButtonClick("+")}>
-        +
-      </Button>
+      <Button color="dark" onClick={() => onOperatorButtonClick('+')}>+</Button>
       <Button onClick={() => onDigitButtonClick(0)}>0</Button>
-      <Button onClick={onDecimalButtonClick}>.</Button>
+      <Button>.</Button>
       <Button color="green" isLarge={true} onClick={onEqualButtonClick}>
         =
       </Button>

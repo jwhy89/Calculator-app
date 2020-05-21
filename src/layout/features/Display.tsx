@@ -5,7 +5,7 @@ interface DisplayProps {
   expression: string;
   value: string;
 }
-export const Display: FunctionComponent<DisplayProps> = ({
+const Display: FunctionComponent<DisplayProps> = ({
   value,
   hasMemory,
   expression,
@@ -15,6 +15,7 @@ export const Display: FunctionComponent<DisplayProps> = ({
       <div className="Display-output">
         <span className="Indicator-list">
           {hasMemory && <span>M</span>}
+
           <span className="Indicator-item">{expression}</span>
         </span>
 
