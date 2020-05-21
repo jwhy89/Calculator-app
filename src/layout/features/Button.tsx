@@ -5,7 +5,7 @@ import styled, { css } from "styled-components";
 interface ButtonProps {
   color?: "red" | "green" | "dark";
   isLarge?: boolean;
-  onClick?: () => void
+  onClick?: () => void;
 }
 
 const colorToCss = (color: ButtonProps["color"]) => {
@@ -84,7 +84,7 @@ export const Button: FunctionComponent<ButtonProps> = ({ children, color, isLarg
     <StyledButton color={color} isLarge={isLarge} onClick={onClick}>
       {children}
     </StyledButton>
-  );
-};
+  )
+}
 
 export default Button;
