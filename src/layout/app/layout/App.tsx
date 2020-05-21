@@ -3,6 +3,7 @@ import "./App.css";
 import Pad from "../../features/Pad";
 import Display from "../../features/Display";
 import { Digit, Operator } from "../models/types";
+import agent from "../api/agent";
 
 export const App: FunctionComponent = () => {
   const [display, setDisplay] = useState<string>("0");
