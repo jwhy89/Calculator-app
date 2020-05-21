@@ -11,7 +11,7 @@ export const App: FunctionComponent = () => {
   const [pendingOperator, setPendingOperator] = useState<Operator>();
   const [memory, setMemory] = useState<number>(0);
 
-  // Calculate
+  //Handles Calculations
   const calculate = (
     rightOperand: number,
     pendingOperator: Operator
@@ -43,22 +43,31 @@ export const App: FunctionComponent = () => {
       setDisplay(newResult.toString().toString().slice(0, 12));
     }
     return true;
-  };
+  };// End of Calculate Handler
+
+  const convertToNumberWithCheckIfNaN = (display: string) => {
+    if (Number.isNaN(Number(display))) {
+      display = "0";
+    }
+    return Number(display);
+  }; // Handling display="ERROR"
 
   // Button Handlers
   const onDigitButtonClick = (digit: Digit) => {
-    let newDisplay = display;
-
-    if ((display === "0" && digit === 0) || display.length > 12) {
-      return;
+    let newDisplay = display
+    if ((display === '0' && digit === 0) || display.length > 12) {
+      return
     }
-    if (display !== "0") {
-      newDisplay = newDisplay + digit.toString();
+    if (waitingForOperand) {
+      newDisplay = ''
+      setWaitingForOperand(false)
+    }
+    if (display !== '0') {
+      newDisplay = newDisplay + digit.toString()
     } else {
-      newDisplay = digit.toString();
+      newDisplay = digit.toString()
     }
-
-    setDisplay(newDisplay);
+    setDisplay(newDisplay)
   }; // End of Digit button handler
 
   const onOperatorButtonClick = (operator: Operator) => {
@@ -77,7 +86,7 @@ export const App: FunctionComponent = () => {
   }; // End of Operator button handler
 
   const onEqualButtonClick = () => {
-    const operand = Number(display);
+    const operand = convertToNumberWithCheckIfNaN(display);
     if (typeof pendingOperator !== "undefined" && !waitingForOperand) {
       if (!calculate(operand, pendingOperator)) {
         return;
@@ -123,16 +132,16 @@ export const App: FunctionComponent = () => {
   }; // End of Memory Minus button handler
 
   const onDecimalButtonClick = () => {
-    let newDisplay = display
+    let newDisplay = display;
     if (waitingForOperand) {
-      newDisplay = '0'
+      newDisplay = "0";
     }
-    if (newDisplay.indexOf('.') === -1) {
-      newDisplay = newDisplay + '.'
+    if (newDisplay.indexOf(".") === -1) {
+      newDisplay = newDisplay + ".";
     }
-    setDisplay(newDisplay)
-    setWaitingForOperand(false)
-  } // End of Decimal Button handler
+    setDisplay(newDisplay);
+    setWaitingForOperand(false);
+  }; // End of Decimal Button handler
 
   const onChangeSignButtonClick = () => {
     const value = Number(display);
