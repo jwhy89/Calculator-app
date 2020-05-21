@@ -16,7 +16,6 @@ export const App: FunctionComponent = () => {
     pendingOperator: Operator
   ): boolean => {
     let newResult = result;
-
     switch (pendingOperator) {
       case "+":
         newResult += rightOperand;
@@ -31,10 +30,8 @@ export const App: FunctionComponent = () => {
         if (rightOperand === 0) {
           return false;
         }
-
         newResult /= rightOperand;
     }
-
     setResult(newResult);
     setDisplay(newResult.toString().toString().slice(0, 12));
 
@@ -55,7 +52,7 @@ export const App: FunctionComponent = () => {
     }
 
     setDisplay(newDisplay);
-  };
+  }; // End of Digit button handler
 
   const onOperatorButtonClick = (operator: Operator) => {
     const operand = Number(display);
@@ -69,6 +66,35 @@ export const App: FunctionComponent = () => {
     }
 
     setPendingOperator(operator);
+    setWaitingForOperand(true);
+  }; // End of Operator button handler
+
+  const onEqualButtonClick = () => {
+    const operand = Number(display);
+
+    if (typeof pendingOperator !== "undefined" && !waitingForOperand) {
+      if (!calculate(operand, pendingOperator)) {
+        return;
+      }
+
+      setPendingOperator(undefined);
+    } else {
+      setDisplay(operand.toString());
+    }
+
+    setResult(operand);
+    setWaitingForOperand(true);
+  }; // End of Equal button handler
+
+  const onAllClearButtonClick = () => {
+    setResult(0);
+    setPendingOperator(undefined);
+    setDisplay("0");
+    setWaitingForOperand(true);
+  };
+
+  const onClearEntryButtonClick = () => {
+    setDisplay("0");
     setWaitingForOperand(true);
   };
 
@@ -88,6 +114,9 @@ export const App: FunctionComponent = () => {
         <Pad
           onDigitButtonClick={onDigitButtonClick}
           onOperatorButtonClick={onOperatorButtonClick}
+          onEqualButtonClick={onEqualButtonClick}
+          onAllClearButtonClick={onAllClearButtonClick}
+          onClearEntryButtonClick={onClearEntryButtonClick}
         />
         <p>Calculations</p>
       </header>

@@ -6,6 +6,9 @@ import { Digit, Operator } from "../app/models/types";
 interface PadProps {
   onDigitButtonClick: (digit: Digit) => void;
   onOperatorButtonClick: (operator: Operator) => void;
+  onEqualButtonClick: () => void;
+  onAllClearButtonClick: () => void
+  onClearEntryButtonClick: () => void
 }
 
 const StyledPad = styled.div`
@@ -14,15 +17,16 @@ const StyledPad = styled.div`
   grid-auto-rows: 1fr;
 `;
 
-export const Pad: FunctionComponent<PadProps> = ({ onDigitButtonClick, onOperatorButtonClick, }) => {
+export const Pad: FunctionComponent<PadProps> = ({ onDigitButtonClick, onOperatorButtonClick, onEqualButtonClick, onAllClearButtonClick,
+  onClearEntryButtonClick }) => {
   return (
     <StyledPad>
       <Button>MR</Button>
       <Button>MC</Button>
       <Button>M+</Button>
       <Button>M-</Button>
-      <Button color="red">AC</Button>
-      <Button>C</Button>
+      <Button color="red" onClick={onAllClearButtonClick}>AC</Button>
+      <Button onClick={onClearEntryButtonClick}>C</Button>
       <Button>-/+</Button>
       <Button color="dark" onClick={() => onOperatorButtonClick('÷')}>÷</Button>
       <Button onClick={() => onDigitButtonClick(7)}>7</Button>
@@ -39,7 +43,7 @@ export const Pad: FunctionComponent<PadProps> = ({ onDigitButtonClick, onOperato
       <Button color="dark" onClick={() => onOperatorButtonClick('+')}>+</Button>
       <Button onClick={() => onDigitButtonClick(0)}>0</Button>
       <Button>.</Button>
-      <Button color="green" isLarge={true}>
+      <Button color="green" isLarge={true} onClick={onEqualButtonClick}>
         =
       </Button>
     </StyledPad>
