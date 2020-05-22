@@ -17,7 +17,9 @@ export const App: FunctionComponent = () => {
   const [display, setDisplay] = useState<string>("0");
   const [result, setResult] = useState<number>(0);
   const [waitingForOperand, setWaitingForOperand] = useState<boolean>(true);
-  const [pendingOperator, setPendingOperator] = useState<Operator|undefined>(undefined);
+  const [pendingOperator, setPendingOperator] = useState<Operator | undefined>(
+    undefined
+  );
   const [memory, setMemory] = useState<number>(0);
   const [calculations, setCalculations] = useState<any>("Loading...");
 
@@ -28,23 +30,20 @@ export const App: FunctionComponent = () => {
   }, []);
 
   //Handles Calculations
-  const calculate = (
-    rightOperand: number,
-    pendingOperator: Operator
-  ): void => {
+  const calculate = (rightOperand: number, pendingOperator: Operator): void => {
     let newResult = doMath(result, rightOperand, pendingOperator);
     postCalculation({
       valueOne: result,
       valueTwo: rightOperand,
       operatorAction: pendingOperator,
-      result: newResult
+      result: newResult,
     });
     setResult(newResult);
     // Display "ERROR" when /0
     if (pendingOperator === "÷" && rightOperand === 0) {
       setDisplay("ERROR");
     } else {
-      setDisplay(newResult.toString().slice(0, 12)); // TODO 
+      setDisplay(newResult.toString().slice(0, 12)); // TODO
     }
   };
 
@@ -54,7 +53,6 @@ export const App: FunctionComponent = () => {
     }
     return Number(display);
   }; // Handling display="ERROR"
-
 
   const buttonClickHandlerProps = {
     onDigitClick(digit: Digit) {
@@ -145,13 +143,12 @@ export const App: FunctionComponent = () => {
 
     onChangeSignClick() {
       const value = Number(display);
-
       if (value > 0) {
         setDisplay("-" + display);
       } else if (value < 0) {
         setDisplay(display.slice(1));
       }
-    }
+    },
   };
 
   return (
@@ -181,8 +178,5 @@ function Calculations({ calculations }) {
   if (typeof calculations === "string") {
     return <p>{calculations}</p>;
   }
-  return (
-    <div className="calculations">
-    </div>
-  );
+  return <div className="calculations"></div>;
 }
