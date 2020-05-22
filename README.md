@@ -16,11 +16,11 @@ Results should remain between sessions. Only show the last 10 calculations desce
 
 ## Built With
 
-React
-TypeScript
-Node.js
-Express.js
-PostgreSQL,
+React,
+TypeScript,
+Node.js,
+Express.js,
+PostgreSQL, and
 styled-components
 
 ## Prerequistes
