@@ -21,13 +21,13 @@ export const App: FunctionComponent = () => {
     undefined
   );
   const [memory, setMemory] = useState<number>(0);
-  const [calculations, setCalculations] = useState<any>("Loading...");
+  const [calculations, setCalculations] = useState<any>([]);
 
   useEffect(() => {
     getCalculations()
       .then((calculations) => setCalculations(calculations))
       .catch(() => setCalculations("Failed to load"));
-  }, []);
+  }, [calculations]);
 
   //Handles Calculations
   const calculate = (rightOperand: number, pendingOperator: Operator): void => {
@@ -178,5 +178,10 @@ function Calculations({ calculations }) {
   if (typeof calculations === "string") {
     return <p>{calculations}</p>;
   }
-  return <div className="calculations"></div>;
+  return <div className="calculations">
+
+{calculations.map((Calculations) => (
+        <div className="calculation" key={Calculations.id} >{Calculations.valueOne} {Calculations.operatorAction} {Calculations.valueTwo} = {Calculations.result}</div>
+      ))}
+  </div>;
 }

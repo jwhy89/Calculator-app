@@ -14,12 +14,44 @@ Results should remain between sessions. Only show the last 10 calculations desce
 - [Example](#example)
 - [Reflection](#reflection)
 
-## Prerequisites
+## Built With
+
+React
+TypeScript
+Node.js
+Express.js
+PostgreSQL,
+styled-components
+
+## Prerequistes
+
+- [Node.js](https://nodejs.org/en/)
+- [PostgresQL](https://www.postgresql.org/)
+- [Postico](https://eggerapps.at/postico/)
 
 ## Installation
 
+Steps to get the development environment running.
+
+1. Clone/Download this project.
+2. Set up a local PostgreSQL database called `Calculations`
+3. Use the data.sql instructions to create a table in your database
+4. In the terminal, CD into the project folder and use the command `npm install`
+5. In the terminal, `npm run server` and `npm run client`
+
 ## Usage
 
-## Example
-
 ## Reflection
+
+App allows users to
+
+- [x] Add, subtract, multiple and divide
+- [x] See their own (and other users) equations
+- [x] Showing newest to oldest, limited to 10 equations on the screen at one time.
+
+I first designed the UI of calculator to visualize what I wanted the calculator to look like first before adding the logic. The reason why I chose React and Typescript was because this was something new I've been working in and wanted to challenge myself with using Typescript. If I had more time, I probably would have tried building a .Net/C# backend as a challenge.
+
+Other features that I could possibly add to the calculator would be:
+
+- Expanded operations that evaluates commands using order of operations.
+- Conversion between common bases (Square Root, Logarithms, Exponents)
