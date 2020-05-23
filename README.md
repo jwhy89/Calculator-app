@@ -8,12 +8,6 @@ Results should remain between sessions. Only show the last 10 calculations desce
 
 This app is deployed on [Heroku](https://calm-brook-35590.herokuapp.com/)
 
-## Table of Contents
-
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Reflection](#reflection)
-
 ## Built With
 
 React,
