@@ -6,12 +6,12 @@ For example, user A and user B go to your site at the same time. User A calculat
 
 Results should remain between sessions. Only show the last 10 calculations descending from most recent to oldest.
 
+This app is deployed on [Heroku](https://calm-brook-35590.herokuapp.com/)
+
 ## Table of Contents
 
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
-- [Usage](#usage)
-- [Example](#example)
 - [Reflection](#reflection)
 
 ## Built With
@@ -39,19 +39,19 @@ Steps to get the development environment running.
 4. In the terminal, CD into the project folder and use the command `npm install`
 5. In the terminal, `npm run server` and `npm run client`
 
-## Usage
-
 ## Reflection
 
-App allows users to
+App allows users to:
 
 - [x] Add, subtract, multiple and divide
 - [x] See their own (and other users) equations
 - [x] Showing newest to oldest, limited to 10 equations on the screen at one time.
 
+
 I first designed the UI of calculator to visualize what I wanted the calculator to look like first before adding the logic. The reason why I chose React and Typescript was because this was something new I've been working in and wanted to challenge myself with using Typescript. If I had more time, I probably would have tried building a .Net/C# backend as a challenge.
 
-Other features that I could possibly add to the calculator would be:
+Things to fix or add:
 
-- Expanded operations that evaluates commands using order of operations.
-- Conversion between common bases (Square Root, Logarithms, Exponents)
+- [ ] Save calculations that have recurring decimals.
+- [ ] Expanded operations that evaluates commands using order of operations.
+- [ ] Conversion between common bases (Square Root, Logarithms, Exponents).
