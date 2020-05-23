@@ -2,7 +2,7 @@
 import axios, { AxiosResponse } from "axios";
 import { ICalculator } from "../models/calculator";
 
-axios.defaults.baseURL = process.env.baseURL || "http://localhost:5000/api";
+axios.defaults.baseURL = "/api";
 
 const responseBody = (response: AxiosResponse) => response.data;
 
