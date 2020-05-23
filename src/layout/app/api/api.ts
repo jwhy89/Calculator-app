@@ -1,7 +1,8 @@
+  
 import axios, { AxiosResponse } from "axios";
 import { ICalculator } from "../models/calculator";
 
-axios.defaults.baseURL =  process.env.DATABASE_URL || "http://localhost:5000/api";
+axios.defaults.baseURL = process.env.DATABASE_URL || "http://localhost:5000/api";
 
 const responseBody = (response: AxiosResponse) => response.data;
 
@@ -12,8 +13,3 @@ const requests = {
 };
 export const getCalculations = (): Promise<ICalculator[]> => requests.get("/calculations");
 export const postCalculation = (calculationMap): Promise<ICalculator[]> => requests.post("/calculations", calculationMap);
-
-// page startup pull last 10 calculations from db
-// get last 10 calculations/when someone hits "=" button - post inputHistory to db (db may need dates to track most recent)
-// api 
-// ?
