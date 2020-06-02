@@ -33,7 +33,7 @@ Steps to get the development environment running.
 4. In the terminal, CD into the project folder and use the command `npm install`
 5. To run locally, in the terminal, `npm run dev`
 
-## Reflection
+## Summary
 
 App allows users to:
 
@@ -43,6 +43,7 @@ App allows users to:
 
 Things to fix or add:
 
+- [ ] Add styling for mobile browsers and responsive window sizing.
 - [ ] Save calculations that have recurring decimals.
 - [ ] Expanded operations that evaluates commands using order of operations.
 - [ ] Conversion between common bases (Square Root, Logarithms, Exponents).
