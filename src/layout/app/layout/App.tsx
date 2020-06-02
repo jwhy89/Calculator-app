@@ -167,6 +167,7 @@ export const App: FunctionComponent = () => {
         <Pad {...buttonClickHandlerProps} />
         <p>Calculations</p>
         <Calculations calculations={calculations} />
+        <br/>
       </header>
     </div>
   );
