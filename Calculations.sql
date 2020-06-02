@@ -1,6 +1,3 @@
-
-Create database called 'Calculations'
-
 CREATE TABLE "Calculations" (
   "id" serial primary key,
   "valueOne" integer,

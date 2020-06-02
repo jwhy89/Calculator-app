@@ -1,4 +1,4 @@
-# Take Home Test from Sezzle, Inc.
+# Jay's Calc vTwo
 
 Create a web app (using any programming languages) which logs calculations as they happen and shares those calculations with everyone connected to the website.
 
@@ -31,7 +31,7 @@ Steps to get the development environment running.
 2. Set up a local PostgreSQL database called `Calculations`
 3. Use the data.sql instructions to create a table in your database
 4. In the terminal, CD into the project folder and use the command `npm install`
-5. In the terminal, `npm run server` and `npm run client`
+5. To run locally, in the terminal, `npm run dev`
 
 ## Reflection
 
@@ -41,11 +41,12 @@ App allows users to:
 - [x] See their own (and other users) equations
 - [x] Showing newest to oldest, limited to 10 equations on the screen at one time.
 
-
-I first designed the UI of calculator to visualize what I wanted the calculator to look like first before adding the logic. The reason why I chose React and Typescript was because this was something new I've been working in and wanted to challenge myself with using Typescript. If I had more time, I probably would have tried building a .Net/C# backend as a challenge.
-
 Things to fix or add:
 
 - [ ] Save calculations that have recurring decimals.
 - [ ] Expanded operations that evaluates commands using order of operations.
 - [ ] Conversion between common bases (Square Root, Logarithms, Exponents).
+
+## Acknowledgments
+
+* Forked from [James Nguyen's Repo](https://github.com/Zygy93/Calculator-app).
